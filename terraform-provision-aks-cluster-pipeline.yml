@@ -39,3 +39,13 @@ stages:
         inputs:
           command: 'validate'
           allowTelemetryCollection: false
+      - task: TerraformCLI@2
+        inputs:
+          command: 'plan'
+          runAzLogin: true
+          allowTelemetryCollection: true
+        env:
+          ARM_CLIENT_ID: $(ARM_CLIENT_ID)
+          ARM_CLIENT_SECRET: $(ARM_CLIENT_SECRET)
+          ARM_TENANT_ID: $(ARM_TENANT_ID)
+          ARM_SUBSCRIPTION_ID: $(ARM_SUBSCRIPTION_ID)
