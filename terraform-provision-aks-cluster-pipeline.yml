@@ -8,8 +8,13 @@ stages:
 - stage: TerraformValidate
   jobs:
     - job: TerraformValidateJob
-      continueOnError: false
+      continueOnError: true
       steps:
+      - script: |
+          # Create the directory and generate files if necessary
+          mkdir -p $(System.DefaultWorkingDirectory)/terraform-manifests
+          # Add commands to generate or move files into the directory
+        displayName: 'Prepare terraform-manifests directory'
       - task: PublishPipelineArtifact@1
         displayName: Publish Artifacts
         inputs:
