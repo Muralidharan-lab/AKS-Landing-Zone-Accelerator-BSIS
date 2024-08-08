@@ -27,7 +27,7 @@ stages:
       - task: TerraformCLI@2
         inputs:
           command: 'init'
-          workingDirectory: '$(System.DefaultWorkingDirectory)/Scenarios/AKS-Secure-Baseline-PrivateCluster/Terraform'
+          workingDirectory: '$(System.DefaultWorkingDirectory)/Scenarios/AKS-Secure-Baseline-PrivateCluster/Terraform/03-AAD-import'
           allowTelemetryCollection: true
 
       - task: TerraformCLI@2
