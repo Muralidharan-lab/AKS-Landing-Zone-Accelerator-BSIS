@@ -12,13 +12,13 @@ stages:
       steps:
       - script: |
           # Create the directory and generate files if necessary
-          mkdir -p $(System.DefaultWorkingDirectory)/terraform-manifests
+         # mkdir -p $(System.DefaultWorkingDirectory)/terraform-manifests
           # Add commands to generate or move files into the directory
-        displayName: 'Prepare terraform-manifests directory'
+        # displayName: 'Prepare terraform-manifests directory'
       - task: PublishPipelineArtifact@1
         displayName: Publish Artifacts
         inputs:
-          targetPath: '$(System.DefaultWorkingDirectory)/terraform-manifests'
+          targetPath: '$(System.DefaultWorkingDirectory)/Scenarios/AKS-Secure-Baseline-PrivateCluster/Terraform'
           artifact: 'terraform-manifests-out'
           publishLocation: 'pipeline'
       - task: JasonBJohnson.azure-pipelines-tasks-terraform.azure-pipelines-tasks-terraform-installer.TerraformInstaller@0
@@ -27,7 +27,9 @@ stages:
       - task: TerraformCLI@2
         inputs:
           command: 'init'
+          workingDirectory: '$(System.DefaultWorkingDirectory)/Scenarios/AKS-Secure-Baseline-PrivateCluster/Terraform'
           allowTelemetryCollection: true
+
       - task: TerraformCLI@2
         inputs:
           command: 'validate'
