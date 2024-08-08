@@ -2,11 +2,11 @@
 # VARIABLES #
 #############
 
+
 variable "aks_admin_group" {
-  default = "AKS App Admin Team"
+  default = "EPAM AKS App Test"
 }
 
 variable "aks_user_group" {
-  default = "AKS App Dev Team"
+  default = "EPAM AKS App Test"
 }
-
