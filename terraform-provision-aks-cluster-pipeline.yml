@@ -10,11 +10,16 @@ stages:
     - job: TerraformValidateJob
       continueOnError: true
       steps:
+       # Step to install Azure CLI
       - script: |
-          # Create the directory and generate files if necessary
-         # mkdir -p $(System.DefaultWorkingDirectory)/terraform-manifests
-          # Add commands to generate or move files into the directory
-        # displayName: 'Prepare terraform-manifests directory'
+          curl -sL https://aka.ms/InstallAzureCLIDeb | sudo bash
+          az --version
+        displayName: 'Install Azure CLI'
+
+      # Step to log in to Azure CLI using a service principal
+      - script: |
+          az login --service-principal -u $(AZURE_CLIENT_ID) -p $(AZURE_CLIENT_SECRET) --tenant $(AZURE_TENANT_ID)
+        displayName: 'Login to Azure CLI'
       - task: PublishPipelineArtifact@1
         displayName: Publish Artifacts
         inputs:
