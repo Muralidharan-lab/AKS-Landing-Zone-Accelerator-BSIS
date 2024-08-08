@@ -17,9 +17,9 @@ stages:
         displayName: 'Install Azure CLI'
 
       # Step to log in to Azure CLI using a service principal
-      - script: |
-          az login --service-principal -u $(AZURE_CLIENT_ID) -p $(AZURE_CLIENT_SECRET) --tenant $(AZURE_TENANT_ID)
-        displayName: 'Login to Azure CLI'
+      #- script: |
+      #    az login --service-principal -u $(AZURE_CLIENT_ID) -p $(AZURE_CLIENT_SECRET) --tenant $(AZURE_TENANT_ID)
+      #  displayName: 'Login to Azure CLI'
       - task: PublishPipelineArtifact@1
         displayName: Publish Artifacts
         inputs:
@@ -42,7 +42,7 @@ stages:
       - task: TerraformCLI@2
         inputs:
           command: 'plan'
-          runAzLogin: true
+          workingDirectory: '$(System.DefaultWorkingDirectory)/Scenarios/AKS-Secure-Baseline-PrivateCluster/Terraform/03-AAD-import'
           allowTelemetryCollection: true
         env:
           ARM_CLIENT_ID: $(ARM_CLIENT_ID)
