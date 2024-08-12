@@ -40,11 +40,7 @@ stages:
         inputs:
           command: 'validate'
           allowTelemetryCollection: false
-        env:
-            ARM_CLIENT_ID: $(ARM_CLIENT_ID)
-            ARM_CLIENT_SECRET: $(ARM_CLIENT_SECRET)
-            ARM_SUBSCRIPTION_ID: $(ARM_SUBSCRIPTION_ID)
-            ARM_TENANT_ID: $(ARM_TENANT_ID)
+        
       - task: TerraformCLI@2
         inputs:
           command: 'plan'
