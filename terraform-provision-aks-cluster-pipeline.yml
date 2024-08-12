@@ -23,7 +23,7 @@ stages:
       - task: PublishPipelineArtifact@1
         displayName: Publish Artifacts
         inputs:
-          targetPath: '$(System.DefaultWorkingDirectory)/Scenarios/AKS-Secure-Baseline-PrivateCluster/Terraform'
+          targetPath: '$(System.DefaultWorkingDirectory)/examples/application_gateway_ingress'
           artifact: 'terraform-manifests-out'
           publishLocation: 'pipeline'
       - task: JasonBJohnson.azure-pipelines-tasks-terraform.azure-pipelines-tasks-terraform-installer.TerraformInstaller@0
@@ -32,7 +32,7 @@ stages:
       - task: TerraformCLI@2
         inputs:
           command: 'init'
-          workingDirectory: '$(System.DefaultWorkingDirectory)/Scenarios/AKS-Secure-Baseline-PrivateCluster/Terraform/03-AAD-import'
+          workingDirectory: '$(System.DefaultWorkingDirectory)/examples/application_gateway_ingress'
           allowTelemetryCollection: true
 
       - task: TerraformCLI@2
@@ -42,5 +42,5 @@ stages:
       - task: TerraformCLI@2
         inputs:
           command: 'plan'
-          workingDirectory: '$(System.DefaultWorkingDirectory)/Scenarios/AKS-Secure-Baseline-PrivateCluster/Terraform/03-AAD-import'
+          workingDirectory: '$(System.DefaultWorkingDirectory)/examples/application_gateway_ingress'
           allowTelemetryCollection: true
