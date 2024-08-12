@@ -34,11 +34,7 @@ stages:
           command: 'init'
           workingDirectory: '$(System.DefaultWorkingDirectory)/Scenarios/AKS-Secure-Baseline-PrivateCluster/Terraform/03-AAD-import'
           allowTelemetryCollection: true
-        env:
-            ARM_CLIENT_ID: $(ARM_CLIENT_ID)
-            ARM_CLIENT_SECRET: $(ARM_CLIENT_SECRET)
-            ARM_SUBSCRIPTION_ID: $(ARM_SUBSCRIPTION_ID)
-            ARM_TENANT_ID: $(ARM_TENANT_ID)
+          
 
       - task: TerraformCLI@2
         inputs:
@@ -54,8 +50,3 @@ stages:
           command: 'plan'
           workingDirectory: '$(System.DefaultWorkingDirectory)/Scenarios/AKS-Secure-Baseline-PrivateCluster/Terraform/03-AAD-import'
           allowTelemetryCollection: true
-        env:
-            ARM_CLIENT_ID: $(ARM_CLIENT_ID)
-            ARM_CLIENT_SECRET: $(ARM_CLIENT_SECRET)
-            ARM_SUBSCRIPTION_ID: $(ARM_SUBSCRIPTION_ID)
-            ARM_TENANT_ID: $(ARM_TENANT_ID)
